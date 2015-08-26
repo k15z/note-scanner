@@ -28,7 +28,7 @@
     </header>
     <main class="container">
         <div class="row">
-            <input id="upload" type="file"/>
+            Select an image: <input id="upload" type="file"/>
         </div>
         <div class="row">
             <canvas id="canvas"></canvas>
@@ -85,13 +85,10 @@
 
         // Handle Business Logic
         function doSomething(scan) {
+            ctx.globalAlpha=0.1;
             var scanner = new Scanner(scan);
-
-            ctx.globalAlpha=0.25;
-            ctx.fillStyle="black";
             var lines = scanner.extractLines();
             for (var i = 0; i < lines.length; i++) {
-                // ctx.fillRect(0, lines[i].y1, canvas.width, lines[i].y2 - lines[i].y1)
                 var bars = scanner.extractBars(lines[i]);
                 for (var j = 0; j < bars.length; j++)
                     ctx.fillRect(bars[j].x1, bars[j].y1, bars[j].x2 - bars[j].x1, bars[j].y2 - bars[j].y1)
