@@ -34,22 +34,22 @@ var Scanner = function(scan) {
                 middle = (boundaries[i] + middle) | 0
                 if (h_sum[middle] > 3)
                     lines.push({
-                        start: boundaries[i] - 5,
-                        end: boundaries[i+1] + 5
+                        y1: boundaries[i] - 5,
+                        y2: boundaries[i+1] + 5
                     });
             }
         return lines;
     }
 
-    function extractParts(i, j) {
+    function extractParts(line) {
 
     }
 
-    function extractBars(i, j) {
+    function extractBars(part) {
 
     }
 
-    function analyzeBar(i, j) {
+    function analyzeBar(bar) {
 
     }
 

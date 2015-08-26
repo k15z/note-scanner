@@ -82,8 +82,9 @@
             ctx.globalAlpha=0.1;
             ctx.fillStyle="black";
             var lines = scanner.extractLines();
-            for (var i = 0; i < lines.length; i++)
-                ctx.fillRect(0, lines[i].start, canvas.width, lines[i].end - lines[i].start)
+            for (var i = 0; i < lines.length; i++) {
+                ctx.fillRect(0, lines[i].y1, canvas.width, lines[i].y2 - lines[i].y1)
+            }
         }
     </script>
 </body>
