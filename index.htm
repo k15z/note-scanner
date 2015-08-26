@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Note Scanner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet'>
     <link href="./css/normalize.css" rel="stylesheet" type="text/css"/>
     <link href="./css/skeleton.css" rel="stylesheet" type="text/css"/>
@@ -79,11 +80,14 @@
         function doSomething(scan) {
             var scanner = new Scanner(scan);
 
-            ctx.globalAlpha=0.1;
+            ctx.globalAlpha=0.25;
             ctx.fillStyle="black";
             var lines = scanner.extractLines();
             for (var i = 0; i < lines.length; i++) {
-                ctx.fillRect(0, lines[i].y1, canvas.width, lines[i].y2 - lines[i].y1)
+                // ctx.fillRect(0, lines[i].y1, canvas.width, lines[i].y2 - lines[i].y1)
+                var bars = scanner.extractBars(lines[i]);
+                for (var j = 0; j < bars.length; j++)
+                    ctx.fillRect(bars[j].x1, bars[j].y1, bars[j].x2 - bars[j].x1, bars[j].y2 - bars[j].y1)
             }
         }
     </script>
