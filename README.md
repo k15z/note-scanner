@@ -1,5 +1,5 @@
 # Note Scanner
-An app which can sight-read piano sheet music.
+An app which can sight-read piano sheet music. Try it out at: http://k15z.github.io/note-scanner/
 
 1. Divide a sheet of music up into lines
     - Just look for a lot of horizontal white space
