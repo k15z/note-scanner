@@ -85,13 +85,23 @@
 
         // Handle Business Logic
         function doSomething(scan) {
-            ctx.globalAlpha=0.1;
             var scanner = new Scanner(scan);
             var lines = scanner.extractLines();
             for (var i = 0; i < lines.length; i++) {
                 var bars = scanner.extractBars(lines[i]);
-                for (var j = 0; j < bars.length; j++)
-                    ctx.fillRect(bars[j].x1, bars[j].y1, bars[j].x2 - bars[j].x1, bars[j].y2 - bars[j].y1)
+                for (var j = 0; j < bars.length; j++) {
+                    var parts = scanner.extractParts(bars[j]);
+                    for (var k = 0; k < parts.length; k++) {
+                        ctx.fillStyle = 
+                            'rgba(' + parseInt(Math.random()*100) + ', ' + parseInt(Math.random()*100) + ', 102, 0.2)';
+                        ctx.fillRect(
+                            parts[k].x1 + 2, 
+                            parts[k].y1 + 2, 
+                            parts[k].x2 - parts[k].x1 - 2, 
+                            parts[k].y2 - parts[k].y1 - 2
+                        );
+                    }
+                }
             }
         }
     </script>
