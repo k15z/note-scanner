@@ -35,6 +35,9 @@
         </div>
     </main>
     <script>
+        // Initialize
+        loadImage("img/1.png");
+        
         // Handle HTML5 Canvas
         var canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
@@ -58,23 +61,27 @@
             };
         }
 
+
         // Handle Image Upload
         var upload = document.getElementById('upload');
         upload.addEventListener('change', handleUpload);
         function handleUpload(e) {
             var reader = new FileReader();
             reader.onload = function(event){
-                var img = new Image();
-                img.onload = function(){
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img,0,0);
-                    doSomething(scanCanvas());
-                }
-                img.src = event.target.result;
+                loadImage(event.target.result);
             }
             reader.readAsDataURL(e.target.files[0]);
         };
+        function loadImage(src) {
+            var img = new Image();
+            img.onload = function(){
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img,0,0);
+                doSomething(scanCanvas());
+            }
+            img.src = src;
+        }
 
         // Handle Business Logic
         function doSomething(scan) {
