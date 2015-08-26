@@ -11,13 +11,13 @@ var Scanner = function(scan) {
         for (var y = 0; y < height - 5; y++) {
             h_sum[y] = 0;
             for (var x = 0; x < width; x++)
-                h_sum[y] += (pixels[x][y+0] +
+                h_sum[y] += pixels[x][y+0] +
                             pixels[x][y+1] +
                             pixels[x][y+2] +
                             pixels[x][y+3] +
-                            pixels[x][y+4])/5.0;
-            if (h_sum[y]/width < 1 != state) {
-                state = h_sum[y]/width < 1;
+                            pixels[x][y+4];
+            if (h_sum[y]/width < 3 != state) {
+                state = h_sum[y]/width < 3;
                 boundaries.push(y);
             }
         }
